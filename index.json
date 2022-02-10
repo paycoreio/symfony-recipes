@@ -1,0 +1,12 @@
+{
+    "recipes": {
+        "corefy/logger-bundle": ["1.0"]
+    },
+    "branch": "master",
+    "is_contrib": true,
+    "_links": {
+        "repository": "https://github.com/paycoreio/symfony-recipes",
+        "origin_template": "{package}:{version}@github.com/paycoreio/symfony-recipes:master",
+        "recipe_template": "https://api.github.com/repos/paycoreio/symfony-recipes/{package}/{version}/manifest.json"
+    }
+}

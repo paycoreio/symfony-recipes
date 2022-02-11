@@ -5,8 +5,8 @@
     "branch": "master",
     "is_contrib": true,
     "_links": {
-        "repository": "https://github.com/paycoreio/symfony-recipes",
+        "repository": "github.com/paycoreio/symfony-recipes",
         "origin_template": "{package}:{version}@github.com/paycoreio/symfony-recipes:master",
-        "recipe_template": "https://api.github.com/repos/paycoreio/symfony-recipes/contents/{package}/{version}/manifest.json"
+        "recipe_template": "https://api.github.com/repos/paycoreio/symfony-recipes/contents/{package_dotted}.{version}.json"
     }
 }

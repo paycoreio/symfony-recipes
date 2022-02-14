@@ -1,6 +1,6 @@
 {
     "recipes": {
-        "corefy/logger-bundle": ["1.0"]
+        "corefy/logger-bundle": ["0.1"]
     },
     "branch": "master",
     "is_contrib": true,

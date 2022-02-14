@@ -3,13 +3,68 @@
         "corefy/logger-bundle": {
             "manifest": {
                 "bundles": {
-                    "Corefy\\Bundle\\Logger\\LoggerBundle": ["all"]
+                    "Corefy\\Bundle\\Logger\\LoggerBundle": [
+                        "all"
+                    ]
                 },
                 "copy-from-recipe": {
-                    "config/": "%CONFIG_DIR%"
+                    "config/": "%CONFIG_DIR%/"
                 }
             },
-            "ref": "fa7f0c55ca02e4a284b35ea033b3b021ae70b77d"
+            "files": {
+                "config/packages/monolog.yaml": {
+                    "contents": [
+                        "monolog:",
+                        "    channels: ['http_plug', 'processing', 'configuration']",
+                        "    handlers:",
+                        "        stdout:",
+                        "            type: stream",
+                        "            path: php://stdout",
+                        "            level: debug",
+                        "            channels: ['!event', '!request', '!lock', '!php']",
+                        "            formatter: monolog.formatter.json",
+                        "        console:",
+                        "            type: console",
+                        "            process_psr_3_messages: false",
+                        "            channels: ['!event', '!doctrine']",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/packages/prod/monolog.yaml": {
+                    "contents": [
+                        "monolog:",
+                        "    handlers:",
+                        "        main:",
+                        "            type: fingers_crossed",
+                        "            action_level: error",
+                        "            handler: stdout",
+                        "            excluded_http_codes: [404, 405]",
+                        "            buffer_size: 50",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/packages/test/monolog.yaml": {
+                    "contents": [
+                        "monolog:",
+                        "    handlers:",
+                        "        main:",
+                        "            type: fingers_crossed",
+                        "            action_level: error",
+                        "            handler: nested",
+                        "            excluded_http_codes: [404, 405]",
+                        "            channels: ['!event']",
+                        "        nested:",
+                        "            type: stream",
+                        "            path: '%kernel.logs_dir%/%kernel.environment%.log'",
+                        "            level: debug",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "fa7f0c55ca02e4a284b35ea033b3b021ae70b77f"
         }
     }
 }
